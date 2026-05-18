@@ -91,7 +91,7 @@ const HeroParallax = () => {
     // 5. EL INDICADOR "SOBRE MÍ" (Animado desde FloatingAboutCard.jsx)
     masterTl.fromTo("#about-me-indicator",
       { 
-        y: "450px", 
+        y: "460px", 
         scale: 0.85,
         opacity: 1
       },
@@ -130,12 +130,12 @@ const HeroParallax = () => {
 
       {/* z-0: Cielo */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-        <img src="/images/BG 2.png" alt="Background" className="object-cover w-full h-full object-bottom" />
+        <img src="./images/BG 2.png" alt="Background" className="object-cover w-full h-full object-bottom" />
       </div>
 
       {/* z-10: Montaña lejana */}
       <div ref={mountainRef} className="absolute inset-0 w-full h-full pointer-events-none origin-bottom z-10">
-        <img src="/images/montana@2x.png" alt="Far Mountain" className="object-cover w-full h-full object-bottom" />
+        <img src="./images/montana@2x.png" alt="Far Mountain" className="object-cover w-full h-full object-bottom" />
       </div>
 
       {/* z-20: Texto PORTFOLIO, Reloj, y Badge 2026 */}
@@ -172,7 +172,7 @@ const HeroParallax = () => {
 
       {/* z-40: Rocas negras del frente */}
       <div ref={rocksRef} className="absolute inset-0 w-full h-full pointer-events-none z-40 origin-bottom">
-        <img src="/images/montana-parallax@2x.png" alt="Foreground Rocks" className="w-full h-full object-cover object-bottom" />
+        <img src="./images/montana-parallax@2x.png" alt="Foreground Rocks" className="w-full h-full object-cover object-bottom" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90 pointer-events-none" />
       </div>
 
