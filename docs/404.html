@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bruno Guilenia — Portfolio</title>
+  <script>
+    // GitHub Pages SPA redirect for Vite with base: "/bruno/"
+    // This handles client-side routing by redirecting 404s back to index.html
+    var pathSegments = window.location.pathname.split('/');
+    // Remove empty strings from split
+    pathSegments = pathSegments.filter(function(s) { return s !== ''; });
+    
+    // If we're at the root (no path), redirect to /bruno/
+    if (pathSegments.length === 0) {
+      window.location.href = '/bruno/';
+    } else {
+      // Preserve the path after /bruno/ for SPA routing
+      var basePath = '/bruno/';
+      var remainingPath = pathSegments.slice(1).join('/');
+      var hash = window.location.hash;
+      var search = window.location.search;
+      var redirectUrl = basePath + remainingPath + search + hash;
+      window.location.href = redirectUrl;
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
