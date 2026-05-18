@@ -11,15 +11,15 @@ import firmaSvg from "/images/firma.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PARALLAX_SCRUB = 1.5;
+const PARALLAX_SCRUB = 1;
 const SCROLL_DISTANCE = "+=2000";
 
 const TEXT_Y_SPEED = -45;
 const TEXT_X_SPEED = -15;
 const TEXT_FADE_END = 0.35;
 
-const MOUNTAIN_Y_SPEED = -10;
-const MOUNTAIN_X_SPEED = 45;
+const MOUNTAIN_Y_SPEED = 0;
+const MOUNTAIN_X_SPEED = 38;
 const MOUNTAIN_FADE_END = 0.55;
 
 const HeroParallax = () => {
@@ -112,13 +112,11 @@ const HeroParallax = () => {
       0
     );
 
-    // 5. CORRECCIÓN DE OCLUSIÓN DE LAS ROCAS FRONTALES
-    // En lugar de un movimiento lineal rígido desde el inicio, hacemos que las rocas
-    // se deslicen sutilmente hacia abajo un 14% para liberar el botón 'MI TRABAJO'
+
     masterTl.fromTo(rocksRef.current,
-      { yPercent: 0 },
+      { yPercent: 2 },
       {
-        yPercent: 14,
+        yPercent: 4,
         ease: "power1.inOut",
         duration: 1
       },
@@ -166,7 +164,7 @@ const HeroParallax = () => {
 
       {/* z-10: Montaña lejana */}
       <div ref={mountainRef} className="absolute inset-0 w-full h-full pointer-events-none origin-bottom z-10">
-        <img src={montanaFondo} alt="Far Mountain" className="object-cover w-full h-full object-bottom" />
+        <img src={montanaFondo} alt="Far Mountain" className="object-cover w-[120%] h-[100%] scale-80 object-bottom origin-bottom" />
       </div>
 
       {/* z-20: Texto PORTFOLIO, Reloj, y Badge 2026 */}
