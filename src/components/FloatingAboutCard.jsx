@@ -14,13 +14,7 @@ const FloatingAboutCard = ({ cardRef, photoRef, signatureRef }) => {
           <section className="flex-1 flex flex-col items-start pt-[61px] px-0 pb-0 box-border min-w-[647px] max-w-full shrink-0 text-left text-[80.5px] text-white font-['Surgena_Personal_use_only'] mq450:pt-10 mq450:box-border mq1250:min-w-full">
             <div className="self-stretch flex flex-col items-start gap-[108px] max-w-full mq1250:gap-[54px] mq825:gap-[27px]">
 
-              {/* Título flotante */}
-              <div className="h-[80px] relative w-full overflow-visible">
-                <h1 id="about-me-indicator" className="m-0 absolute left-0 top-0 text-[length:inherit] leading-[155%] font-semibold font-[inherit] inline-block max-w-full z-[1] mq450:text-2xl mq450:leading-[50px] mq825:text-[40px] mq825:leading-[75px] drop-shadow-md cursor-pointer will-change-transform"
-                  onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
-                  Sobre mi ...
-                </h1>
-              </div>
+
 
               {/* Biografía */}
               <div className="self-stretch h-auto relative text-[28.5px] leading-[128%] font-['ITC_Avant_Garde_Gothic_Std'] inline-block shrink-0 z-[1] text-white/80 mq450:text-[23px] mq450:leading-[29px]">
