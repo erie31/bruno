@@ -4,6 +4,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ClockIndicator from "./ClockIndicator";
 import FloatingNav from "./FloatingNav";
 import FloatingAboutCard from "./FloatingAboutCard";
+import bgCielo from "/images/BG 2.png";
+import montanaFondo from "/images/montana@2x.png";
+import rocasFrente from "/images/montana-parallax@2x.png";
+import firmaSvg from "/images/firma.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +45,14 @@ const HeroParallax = () => {
         scrub: PARALLAX_SCRUB,
         onUpdate: (self) => {
           if (cardRef.current) {
+            // CONTROL DE CLICKABLE: Si el scroll apenas arranca, desactivamos clicks
             cardRef.current.style.pointerEvents = self.progress > 0.05 ? "auto" : "none";
+
+            // 🔥 TRUCO MAESTRO DE PLANOS (Z-INDEX DINÁMICO)
+            // Al principio, la tarjeta está en z-30 (detrás de las rocas z-40).
+            // Cuando el scroll pasa el 45%, la tarjeta salta al frente (z-45) de las rocas.
+            // Esto hace que el texto "Sobre mí..." nazca en el valle y pase ADELANTE de las piedras.
+            cardRef.current.style.zIndex = self.progress > 0.45 ? "45" : "30";
           }
         }
       },
@@ -65,14 +76,7 @@ const HeroParallax = () => {
       duration: TEXT_FADE_END
     }, 0);
 
-    // 3. FIJAMOS LAS ROCAS Y CORREGIMOS OCLUSIÓN (las desfasamos un poco para abajo)
-    masterTl.to(rocksRef.current, {
-      yPercent: 15,
-      ease: "none",
-      duration: 1
-    }, 0);
-
-    // 4. LA TARJETA (Arranca invisible y emerge)
+    // 3. LA TARJETA (Arranca invisible y emerge)
     masterTl.fromTo(cardRef.current,
       {
         y: "100vh",
@@ -89,24 +93,39 @@ const HeroParallax = () => {
       0
     );
 
-    // 5. EL INDICADOR "SOBRE MÍ" (Animado desde FloatingAboutCard.jsx)
+    // 4. EL INDICADOR "SOBRE MÍ" (Zona 1 a Zona 2)
+    // Lo empujamos 480px hacia abajo relativos a la tarjeta. Como la tarjeta está subiendo,
+    // este desfase lo clava visualmente abajo en el valle de la roca (Zona 1)
     masterTl.fromTo("#about-me-indicator",
-      { 
-        y: "460px", 
+      {
+        y: "480px",
         scale: 0.85,
-        opacity: 1
+        opacity: 1 // Aseguramos que esté 100% visible desde el inicio
       },
-      { 
-        y: "0px", 
+      {
+        y: "0px", // Vuelve a su lugar natural arriba a la izquierda de la tarjeta (Zona 2)
         scale: 1,
         opacity: 1,
-        ease: "power2.out", 
+        ease: "power2.out",
         duration: 1
       },
-      0 
+      0
     );
 
-    // Contenido interno de la tarjeta
+    // 5. CORRECCIÓN DE OCLUSIÓN DE LAS ROCAS FRONTALES
+    // En lugar de un movimiento lineal rígido desde el inicio, hacemos que las rocas
+    // se deslicen sutilmente hacia abajo un 14% para liberar el botón 'MI TRABAJO'
+    masterTl.fromTo(rocksRef.current,
+      { yPercent: 0 },
+      {
+        yPercent: 14,
+        ease: "power1.inOut",
+        duration: 1
+      },
+      0
+    );
+
+    // Contenido interno de la tarjeta (Garantiza dinamismo fluido)
     masterTl.fromTo(cardInnerPhotoRef.current,
       { yPercent: 15 },
       { yPercent: 0, ease: "power2.out", duration: 1.2 },
@@ -142,12 +161,12 @@ const HeroParallax = () => {
 
       {/* z-0: Cielo */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-        <img src="/images/BG 2.png" alt="Background" className="object-cover w-full h-full object-bottom" />
+        <img src={bgCielo} alt="Background" className="object-cover w-full h-full object-bottom" />
       </div>
 
       {/* z-10: Montaña lejana */}
       <div ref={mountainRef} className="absolute inset-0 w-full h-full pointer-events-none origin-bottom z-10">
-        <img src="/images/montana@2x.png" alt="Far Mountain" className="object-cover w-full h-full object-bottom" />
+        <img src={montanaFondo} alt="Far Mountain" className="object-cover w-full h-full object-bottom" />
       </div>
 
       {/* z-20: Texto PORTFOLIO, Reloj, y Badge 2026 */}
@@ -161,7 +180,7 @@ const HeroParallax = () => {
           <h1 className="text-[120px] sm:text-[150px] md:text-[250px] lg:text-[320px] font-['Surgena_Personal_use_only'] text-white leading-none select-none tracking-tight">
             PORTFOLIO
           </h1>
-          
+
           {/* Texto Bruno Guilenia abajo a la izquierda */}
           <h2 className="text-[24px] sm:text-[30px] md:text-[40px] font-['ITC_Avant_Garde_Gothic_Std'] text-white mt-1 font-light tracking-wide">
             Bruno Guilenia
@@ -175,7 +194,11 @@ const HeroParallax = () => {
       </div>
 
       {/* z-30: La Tarjeta de Cristal (Nace invisible, limpia el fondo) */}
-      <div ref={cardRef} className="absolute inset-0 w-full h-full z-30 pointer-events-none flex items-end justify-center pb-24">
+      <div
+        ref={cardRef}
+        style={{ zIndex: 30 }}
+        className="absolute inset-0 w-full h-full pointer-events-none flex items-end justify-center pb-24"
+      >
         <div className="pointer-events-auto w-full max-w-[1300px] px-4">
           <FloatingAboutCard photoRef={cardInnerPhotoRef} signatureRef={cardInnerSignatureRef} />
         </div>
@@ -184,13 +207,13 @@ const HeroParallax = () => {
 
       {/* z-35: Firma SVG (bottom-right, fades in after card settles) */}
       <div ref={firmaRef} className="absolute bottom-8 right-8 w-32 h-auto pointer-events-none z-[35] opacity-0">
-        <img src="/images/firma.svg" alt="Firma" className="w-full h-auto" />
+        <img src={firmaSvg} alt="Firma" className="w-full h-auto" />
       </div>
 
 
       {/* z-40: Rocas negras del frente */}
       <div ref={rocksRef} className="absolute inset-0 w-full h-full pointer-events-none z-40 origin-bottom">
-        <img src="/images/montana-parallax@2x.png" alt="Foreground Rocks" className="w-full h-full object-cover object-bottom" />
+        <img src={rocasFrente} alt="Foreground Rocks" className="w-full h-full object-cover object-bottom" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90 pointer-events-none" />
       </div>
 

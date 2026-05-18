@@ -1,3 +1,6 @@
+import pathFirma from "/images/Path.svg";
+import fotoBruno from "/images/bruno.png";
+
 const FloatingAboutCard = ({ cardRef, photoRef, signatureRef }) => {
   return (
     <div
@@ -7,14 +10,14 @@ const FloatingAboutCard = ({ cardRef, photoRef, signatureRef }) => {
       <div className="w-full max-w-[1700px] flex flex-col">
         {/* About card - HTML nativo con Glassmorphism Apple Real */}
         <div className="self-stretch rounded-[80px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[40px] border border-[rgba(255,255,255,0.15)] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] flex flex-col lg:flex-row items-start py-[55px] pl-[94px] pr-[71px] box-border gap-[129px] max-w-full z-[2] mq450:gap-4 mq450:pt-[23px] mq450:pb-[23px] mq450:box-border mq1250:gap-16 mq1250:pl-[47px] mq1250:pr-[35px] mq1250:box-border mq825:gap-8 mq825:pl-[23px] mq825:pt-9 mq825:pb-9 mq825:box-border mq1550:flex-wrap">
-          
+
           <section className="flex-1 flex flex-col items-start pt-[61px] px-0 pb-0 box-border min-w-[647px] max-w-full shrink-0 text-left text-[80.5px] text-white font-['Surgena_Personal_use_only'] mq450:pt-10 mq450:box-border mq1250:min-w-full">
             <div className="self-stretch flex flex-col items-start gap-[108px] max-w-full mq1250:gap-[54px] mq825:gap-[27px]">
-              
+
               {/* Título flotante */}
               <div className="h-[80px] relative w-full overflow-visible">
                 <h1 id="about-me-indicator" className="m-0 absolute left-0 top-0 text-[length:inherit] leading-[155%] font-semibold font-[inherit] inline-block max-w-full z-[1] mq450:text-2xl mq450:leading-[50px] mq825:text-[40px] mq825:leading-[75px] drop-shadow-md cursor-pointer will-change-transform"
-                    onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
+                  onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
                   Sobre mi ...
                 </h1>
               </div>
@@ -28,25 +31,25 @@ const FloatingAboutCard = ({ cardRef, photoRef, signatureRef }) => {
                 <br />
                 <br />
                 Integrando branding, contenido digital, motion, UX/UI, editorial, video
-                <br />e inteligencia artificial con un objetivo claro: comunicar efectivamente.
+                <br />e inteligencia artificial con un objective claro: comunicar efectivamente.
               </div>
 
-              {/* Firma vectorial */}
+              {/* Firma vectorial usando la variable importada 👈 */}
               <img
                 ref={signatureRef}
-                src="/Path.svg"
+                src={pathFirma}
                 alt="Firma Bruno Guilenia"
                 className="w-[120px] h-auto mt-4 opacity-80"
               />
             </div>
           </section>
 
-          {/* Foto del personaje incorporada dinámicamente sobre el cristal */}
+          {/* Foto usando la variable importada 👈 */}
           <img
             ref={photoRef}
             className="w-[526px] relative rounded-[74.9px] max-h-full object-cover max-w-full z-[1] shrink-0 mq1550:flex-1 drop-shadow-2xl"
             alt="Bruno Guilenia"
-            src="/Rectangle-7@2x.png"
+            src={fotoBruno}
           />
         </div>
 
