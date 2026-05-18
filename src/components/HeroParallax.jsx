@@ -26,6 +26,7 @@ const HeroParallax = () => {
   const cardRef = useRef(null);
   const cardInnerPhotoRef = useRef(null);
   const cardInnerSignatureRef = useRef(null);
+  const firmaRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -50,7 +51,7 @@ const HeroParallax = () => {
     masterTl.to(mountainRef.current, {
       yPercent: MOUNTAIN_Y_SPEED,
       xPercent: MOUNTAIN_X_SPEED,
-      opacity: 0,
+      opacity: 0.7,
       ease: "none",
       duration: MOUNTAIN_FADE_END
     }, 0);
@@ -118,6 +119,17 @@ const HeroParallax = () => {
       0.4
     );
 
+    // Firma SVG - fade + scale after card settles
+    masterTl.fromTo(firmaRef.current,
+      { opacity: 0, scale: 0.9 },
+      {
+        opacity: 1,
+        scale: 1,
+        ease: "power2.out",
+        duration: 0.2
+      }, 0.8
+    );
+
     return () => {
       masterTl.scrollTrigger?.kill();
       masterTl.kill();
@@ -130,12 +142,12 @@ const HeroParallax = () => {
 
       {/* z-0: Cielo */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-        <img src="./images/BG 2.png" alt="Background" className="object-cover w-full h-full object-bottom" />
+        <img src="/images/BG 2.png" alt="Background" className="object-cover w-full h-full object-bottom" />
       </div>
 
       {/* z-10: Montaña lejana */}
       <div ref={mountainRef} className="absolute inset-0 w-full h-full pointer-events-none origin-bottom z-10">
-        <img src="./images/montana@2x.png" alt="Far Mountain" className="object-cover w-full h-full object-bottom" />
+        <img src="/images/montana@2x.png" alt="Far Mountain" className="object-cover w-full h-full object-bottom" />
       </div>
 
       {/* z-20: Texto PORTFOLIO, Reloj, y Badge 2026 */}
@@ -170,9 +182,15 @@ const HeroParallax = () => {
       </div>
 
 
+      {/* z-35: Firma SVG (bottom-right, fades in after card settles) */}
+      <div ref={firmaRef} className="absolute bottom-8 right-8 w-32 h-auto pointer-events-none z-[35] opacity-0">
+        <img src="/images/firma.svg" alt="Firma" className="w-full h-auto" />
+      </div>
+
+
       {/* z-40: Rocas negras del frente */}
       <div ref={rocksRef} className="absolute inset-0 w-full h-full pointer-events-none z-40 origin-bottom">
-        <img src="./images/montana-parallax@2x.png" alt="Foreground Rocks" className="w-full h-full object-cover object-bottom" />
+        <img src="/images/montana-parallax@2x.png" alt="Foreground Rocks" className="w-full h-full object-cover object-bottom" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90 pointer-events-none" />
       </div>
 
