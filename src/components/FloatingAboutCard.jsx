@@ -34,7 +34,7 @@ const FloatingAboutCard = ({ cardRef, photoRef, signatureRef }) => {
               {/* Firma vectorial */}
               <img
                 ref={signatureRef}
-                src="./Path.svg"
+                src="/Path.svg"
                 alt="Firma Bruno Guilenia"
                 className="w-[120px] h-auto mt-4 opacity-80"
               />
@@ -46,7 +46,7 @@ const FloatingAboutCard = ({ cardRef, photoRef, signatureRef }) => {
             ref={photoRef}
             className="w-[526px] relative rounded-[74.9px] max-h-full object-cover max-w-full z-[1] shrink-0 mq1550:flex-1 drop-shadow-2xl"
             alt="Bruno Guilenia"
-            src="./Rectangle-7@2x.png"
+            src="/Rectangle-7@2x.png"
           />
         </div>
 

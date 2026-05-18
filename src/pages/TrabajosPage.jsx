@@ -31,7 +31,7 @@ const TrabajosPage = () => {
           </svg>
           Volver
         </Link>
-        <img src="./Vector1.svg" alt="Logo" className="w-6 h-6" />
+        <img src="/Vector1.svg" alt="Logo" className="w-6 h-6" />
       </header>
 
       {/* Title */}
