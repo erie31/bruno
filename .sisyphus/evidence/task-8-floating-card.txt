@@ -1,0 +1,7 @@
+TASK 8: FloatingAboutCard hidden→reveal - VERIFIED
+- GSAP fromTo opacity 0→1, y 50px→0 ✅
+- trigger: "#parallax-scene", start: "top 60%", end: "top 10%", scrub: 1 ✅
+- Starts with pointer-events:none, enables at progress > 0.05 ✅
+- onClick scrollTo "sobre-mi" preserved ✅
+- Glassmorphism preserved ✅
+- Build: 61 modules, 0 errors ✅

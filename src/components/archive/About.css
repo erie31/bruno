@@ -1,0 +1,44 @@
+/* About.css */
+.about {
+    background-color: var(--bg-color);
+    text-align: left;
+    align-items: flex-start;
+}
+
+.about-content {
+    width: 100%;
+    max-width: 800px;
+}
+
+.about-content h2 {
+    margin-bottom: 3rem;
+}
+
+.text-column {
+    border-left: 2px solid var(--accent-color);
+    padding-left: 2rem;
+}
+
+.highlight {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.closing {
+    margin-top: 2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .text-column {
+        padding-left: 1rem;
+        border-left-width: 1px;
+    }
+
+    .highlight {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,72 @@
+/* ParallaxSlide.css */
+.parallax-slide-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+    will-change: transform;
+    overflow: hidden;
+    /* Ensure no scrollbars within the slide */
+}
+
+.parallax-slide-container.visible {
+    opacity: 1;
+}
+
+.parallax-inner {
+    width: auto;
+    /* Allow width to fit content */
+    height: auto;
+    /* Allow height to fit content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s linear;
+}
+
+.parallax-inner:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.portfolio-slide {
+    max-width: 90vw;
+    /* Constrain width */
+    max-height: 85vh;
+    /* Constrain height for uniformity */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    /* Rounded corners */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    /* Restore shadow */
+    display: block;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+
+    /* Slightly taller on mobile? Or keep same ratio */
+    .portfolio-slide {
+        max-width: 90vw;
+        max-height: 80vh;
+        /* Adjust for mobile bars if needed */
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Optional: Slight zoom effect for mobile vitality */
+    .parallax-inner .portfolio-slide {
+        transform: scale(1.0);
+        /* Reset scale so we don't crop or jitter */
+        /* If we want zoom, we need a wrapper, but simplistic is better for "fit" */
+    }
+}

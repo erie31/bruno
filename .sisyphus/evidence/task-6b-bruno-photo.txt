@@ -1,0 +1,5 @@
+TASK 6b: LayerBrunoPhoto created - VERIFIED
+- LayerBrunoPhoto.jsx created at z-index:15 ✅
+- Uses /images/Foto mía.png, centered, max-w-[526px] ✅
+- GSAP animation with yPercent:25, trigger: "#parallax-scene" ✅
+- Exported from index.js, rendered in PortfolioPage.jsx ✅

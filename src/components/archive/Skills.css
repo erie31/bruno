@@ -1,0 +1,38 @@
+/* Skills.css */
+.skills {
+    background-color: #1e293b;
+    /* Slate 800 - Slightly lighter than bg */
+}
+
+.skills-intro {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #cbd5e1;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.skill-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.skill-item:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+}

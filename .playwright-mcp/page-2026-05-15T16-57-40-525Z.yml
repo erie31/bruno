@@ -1,0 +1,69 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e7]:
+      - link "Inicio" [ref=e9] [cursor=pointer]:
+        - /url: "#inicio"
+      - link "Sobre mi" [ref=e12] [cursor=pointer]:
+        - /url: "#sobre-mi"
+      - link "Mis trabajos" [ref=e16] [cursor=pointer]:
+        - /url: "#trabajos"
+      - link "Contacto" [ref=e18] [cursor=pointer]:
+        - /url: "#contacto"
+  - main [ref=e19]:
+    - generic [ref=e21]:
+      - generic [ref=e25]:
+        - link "Inicio" [ref=e27] [cursor=pointer]:
+          - /url: "#inicio"
+        - link "Sobre mi" [ref=e30] [cursor=pointer]:
+          - /url: "#sobre-mi"
+        - link "Mis trabajos" [ref=e34] [cursor=pointer]:
+          - /url: "#trabajos"
+        - link "Contacto" [ref=e36] [cursor=pointer]:
+          - /url: "#contacto"
+      - generic [ref=e39]:
+        - heading "18:47 hs | Argentina" [level=3] [ref=e40]
+        - heading "2026" [level=2] [ref=e43]
+    - generic [ref=e45]:
+      - main [ref=e46]:
+        - generic [ref=e50]:
+          - link "Inicio" [ref=e52] [cursor=pointer]:
+            - /url: "#inicio"
+          - link "Sobre mi" [ref=e55] [cursor=pointer]:
+            - /url: "#sobre-mi"
+          - link "Mis trabajos" [ref=e59] [cursor=pointer]:
+            - /url: "#trabajos"
+          - link "Contacto" [ref=e61] [cursor=pointer]:
+            - /url: "#contacto"
+        - generic [ref=e63]:
+          - generic [ref=e66]:
+            - heading "Sobre mi ..." [level=1] [ref=e67]
+            - generic [ref=e68]:
+              - text: Soy Bruno Guilenia, Director Creativo y Disenador Grafico argentino.
+              - text: Hace mas de 8 anos diseno sistemas visuales para marcas.
+              - text: Integrando branding, contenido digital, motion, UX/UI, editorial, video
+              - text: "e inteligencia artificial con un objetivo claro: comunicar efectivamente."
+          - link "MI TRABAJO" [ref=e70] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e71]: MI TRABAJO
+      - heading "Branding · Motion Graphics · UX/UI · Editorial · Video · Social Media · AI" [level=2] [ref=e73]
+    - generic [ref=e75]:
+      - generic [ref=e79]:
+        - link "Inicio" [ref=e81] [cursor=pointer]:
+          - /url: "#inicio"
+        - link "Sobre mi" [ref=e84] [cursor=pointer]:
+          - /url: "#sobre-mi"
+        - link "Mis trabajos" [ref=e88] [cursor=pointer]:
+          - /url: "#trabajos"
+        - link "Contacto" [ref=e90] [cursor=pointer]:
+          - /url: "#contacto"
+      - generic [ref=e93]:
+        - generic [ref=e96]:
+          - heading "Sobre mi ..." [level=1] [ref=e97]
+          - generic [ref=e98]:
+            - text: Soy Bruno Guilenia, Director Creativo y Disenador Grafico argentino.
+            - text: Hace mas de 8 anos diseno sistemas visuales para marcas.
+            - text: Integrando branding, contenido digital, motion, UX/UI, editorial, video
+            - text: "e inteligencia artificial con un objetivo claro: comunicar efectivamente."
+        - link "MI TRABAJO" [ref=e100] [cursor=pointer]:
+          - /url: "#"
+          - generic [ref=e101]: MI TRABAJO

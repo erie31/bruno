@@ -1,0 +1,4 @@
+TASK 6: LayerCharacterRocks as foreground dark rocks - VERIFIED
+- brightness-50 on image for dark appearance ✅
+- Dark gradient overlay (transparent → black/90) for occlusion ✅
+- GSAP animation preserved (yPercent:50, trigger: "#parallax-scene") ✅

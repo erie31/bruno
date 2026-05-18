@@ -1,0 +1,3 @@
+TASK 5: LayerBackground asset fix - VERIFIED
+- src changed from /BACKROUND@2x.png to /images/BG 2.png ✅
+- GSAP animation preserved (yPercent:5, trigger: "#parallax-scene") ✅

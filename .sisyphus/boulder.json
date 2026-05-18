@@ -1,0 +1,32 @@
+{
+  "active_plan": "D:\\BRUNO\\.sisyphus\\plans\\brunoguilenia-figma-alignment.md",
+  "started_at": "2026-05-17T04:19:14.364Z",
+  "session_ids": [
+    "ses_1cc6e312bffekKtGSpyizTzdAD"
+  ],
+  "session_origins": {
+    "ses_1cc6e312bffekKtGSpyizTzdAD": "direct"
+  },
+  "plan_name": "brunoguilenia-figma-alignment",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "FloatingNav — corregir ruta del logo",
+      "session_id": "ses_1cbd6a18effeDq3tbUBpCzi9lI",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-05-17T04:20:24.477Z"
+    },
+    "todo:4": {
+      "task_key": "todo:4",
+      "task_label": "4",
+      "task_title": "FloatingAboutCard — arreglar layout, overflow y espaciado",
+      "session_id": "ses_1cbd4934cffeuxVYqeV182WPqU",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-05-17T04:23:36.719Z"
+    }
+  }
+}

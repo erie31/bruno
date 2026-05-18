@@ -1,0 +1,1 @@
+﻿SCROLL_SNAP_REMOVED - scroll-snap-type removed from App.css at 2026-05-15 14:55:01
