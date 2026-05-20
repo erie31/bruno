@@ -19,7 +19,7 @@ const TEXT_X_SPEED = -15;
 const TEXT_FADE_END = 0.35;
 
 const MOUNTAIN_Y_SPEED = 0;
-const MOUNTAIN_X_SPEED = 38;
+const MOUNTAIN_X_SPEED = 28;
 const MOUNTAIN_FADE_END = 0.55;
 
 const HeroParallax = () => {
@@ -127,10 +127,10 @@ const HeroParallax = () => {
     // =========================================================================
     masterTl.fromTo(rocksRef.current,
       { 
-        yPercent: 49 //
+        yPercent: 65 //
       },
       {
-        yPercent: 0, 
+        yPercent: 20, 
         ease: "power2.out", 
         duration: 1 // 
       },
@@ -221,7 +221,7 @@ const HeroParallax = () => {
       {/* COMPONENTE: INDICADOR DE SCROLL (Z-45) */}
       <div
         id="scroll-mouse-indicator"
-        className="absolute inset-x-0 bottom-32 flex flex-col items-center justify-center pointer-events-none z-[45] transition-opacity duration-300"
+        className="absolute inset-x-0 bottom-10 flex flex-col items-center justify-center pointer-events-none z-[45] transition-opacity duration-300"
       >
         <span className="text-white/60 font-['ITC_Avant_Garde_Gothic_Std'] text-[12px] md:text-[14px] tracking-[0.2em] uppercase mb-3 drop-shadow-md">
           Sobre mi...
@@ -247,7 +247,7 @@ const HeroParallax = () => {
         <img src={firmaSvg} alt="Firma" className="w-full h-auto" />
       </div>
 
-      {/* z-40: Rocas negras del frente - AHORA MANEJADAS DESDE GSAP */}
+      {/* z-40: Rocas negras del frente - */}
       <div ref={rocksRef} className="absolute inset-0 w-full h-full pointer-events-none z-40 origin-bottom">
         <img 
           src={rocasFrente} 
