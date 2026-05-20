@@ -46,11 +46,9 @@ const HeroParallax = () => {
         onUpdate: (self) => {
           if (cardRef.current) {
             cardRef.current.style.pointerEvents = self.progress > 0.05 ? "auto" : "none";
-            // Si empieza el scroll, la tarjeta y los textos saltan por delante de z-40 (rocas)
             cardRef.current.style.zIndex = self.progress > 0.1 ? "30" : "30";
           }
           if (textRef.current) {
-            // Evita que el H2 de Bruno Guilenia quede tapado por las rocas fijas
             textRef.current.style.zIndex = self.progress > 0.1 ? "50" : "20";
           }
         }
@@ -96,7 +94,6 @@ const HeroParallax = () => {
     // DESVANECIMIENTO SINCRÓNICO DEL INDICADOR DE MOUSE Y TEXTOS CENTRALES
     // =========================================================================
 
-    // Oculta el mouse indicador de inmediato en el primer 20% del recorrido del scroll
     masterTl.fromTo("#scroll-mouse-indicator",
       {
         opacity: 1,
@@ -104,14 +101,13 @@ const HeroParallax = () => {
       },
       {
         opacity: 0,
-        y: -30,               // Sutil desplazamiento hacia arriba mientras desaparece
+        y: -30,
         ease: "power1.out",
-        duration: 0.2         // Duración corta para limpiar rápido la UI inferior
+        duration: 0.2
       },
-      0                       // Inicia exactamente en el segundo cero del scroll
+      0
     );
 
-    // Tu animación actual de los textos centrales (textRef) se sincroniza acá abajo:
     masterTl.fromTo(textRef.current,
       {
         opacity: 1,
@@ -121,22 +117,27 @@ const HeroParallax = () => {
         opacity: 0,
         scale: 0.92,
         ease: "power1.out",
-        duration: 0.4        // Se desvanece un cachito después mientras la tarjeta emerge
-      },
-      0                       // Corre en paralelo desde el inicio del scroll
-    );
-
-    masterTl.fromTo(rocksRef.current,
-      { yPercent: 0 },
-      {
-        yPercent: 1,
-        ease: "power1.inOut",
-        duration: 1
+        duration: 0.4
       },
       0
     );
 
-    // Contenido interno de la tarjeta (Garantiza dinamismo fluido)
+    // =========================================================================
+    // 🔥 NUEVA ANIMACIÓN DE ROCAS (Z-40): SE LEVANTAN AL FINAL CON LA CARD 🔥
+    // =========================================================================
+    masterTl.fromTo(rocksRef.current,
+      { 
+        yPercent: 49 //
+      },
+      {
+        yPercent: 0, 
+        ease: "power2.out", 
+        duration: 1 // 
+      },
+      0
+    );
+
+    // Contenido interno de la tarjeta
     masterTl.fromTo(cardInnerPhotoRef.current,
       { yPercent: 15 },
       { yPercent: 0, ease: "power2.out", duration: 1.2 },
@@ -176,37 +177,48 @@ const HeroParallax = () => {
       </div>
 
       {/* z-10: Montaña lejana */}
-      <div ref={mountainRef} className="absolute inset-0 w-full h-full pointer-events-none origin-bottom z-10 flex items-end justify-center">
-        <img src={montanaFondo} alt="Far Mountain" className="object-cover w-[90%] h-[90%] scale-83 object-bottom origin-bottom mb-10" />
+      <div
+        ref={mountainRef}
+        className="absolute inset-0 w-full h-full pointer-events-none origin-bottom z-10"
+      >
+        <img
+          src={montanaFondo}
+          alt="Far Mountain"
+          className="object-cover w-[90%] h-[90%] object-bottom origin-bottom -translate-x-[-14.5%] -translate-y-[-50%]"
+        />
       </div>
 
       {/* z-20: Texto PORTFOLIO, Reloj, y Badge 2026 */}
-      <div ref={textRef} className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none origin-bottom z-20">
-        <div className="relative flex flex-col items-start">
-          {/* Reloj arriba a la izquierda */}
-          <div className="absolute -top-[80px] left-[5px]">
-            <ClockIndicator />
-          </div>
+<div ref={textRef} className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none origin-bottom z-20 px-10">
+  
+  {/* 🔥 CONTENEDOR SE AJUSTA AL ANCHO EXACTO DE LA PALABRA 🔥 */}
+  <div className="relative flex flex-col items-start w-fit mx-auto">
 
-          <h1 className="text-[120px] sm:text-[150px] md:text-[250px] lg:text-[320px] font-['Surgena_Personal_use_only'] text-white leading-none select-none tracking-tight">
-            PORTFOLIO
-          </h1>
+    {/* Reloj arriba a la izquierda (Clavado con el inicio de la P) */}
+    <div className="absolute -top-[80px] md:-top-[100px] left-[18px]">
+      <ClockIndicator />
+    </div>
 
-          {/* Texto Bruno Guilenia abajo a la izquierda */}
-          <h2 className="text-[24px] sm:text-[30px] md:text-[40px] font-['ITC_Avant_Garde_Gothic_Std'] text-white mt-1 font-light tracking-wide">
-            Bruno Guilenia
-          </h2>
+    {/* TEXTO PRINCIPAL: Quitamos text-center y w-full para que mande sobre el ancho del contenedor */}
+    <h1 className="text-[13vw] md:text-[18vw] font-['Surgena_Personal_use_only'] text-white leading-[0.8] select-none tracking-tight whitespace-nowrap overflow-visible">
+      PORTFOLIO
+    </h1>
 
-          {/* Badge 2026 superpuesto a la O */}
-          <div className="absolute top-[8%] right-[-3%] md:right-[-6%] rounded-[66px] bg-[rgba(255,255,255,0.02)] backdrop-blur-[45px] border border-[rgba(255,255,255,0.15)] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] px-[35px] py-[10px] md:px-[60px] md:py-[18px]">
-            <span className="text-white font-bold text-[24px] md:text-[35px] drop-shadow-md">2026</span>
-          </div>
-        </div>
-      </div>
+    {/* 🔥 BRUNO ALINEADO MILIMÉTRICAMENTE: Al no tener paddings raros, se pega al inicio del bloque de la 'P' 🔥 */}
+    <h2 className="text-[24px] sm:text-[30px] md:text-[40px] font-['ITC_Avant_Garde_Gothic_Std'] text-white mt-3 font-light tracking-wide pl-5">
+      Bruno Guilenia
+    </h2>
 
-      {/* ========================================================================= */}
-      {/* COMPONENTE NUEVO: INDICADOR DE SCROLL EN LUGAR 1 (Centro Inferior, Z-45) */}
-      {/* ========================================================================= */}
+    {/* 🔥 BADGE 2026: Centro matemático sobre la última 'O' 🔥 */}
+    {/* 'right-[5.5%]' ubica el borde en el medio de la O, y 'translate-x-1/2' centra el badge ahí mismo */}
+    <div className="absolute top-0 right-[6.9%] -translate-y-[90%] translate-x-1/2 rounded-[66px] bg-[rgba(255,255,255,0.02)] backdrop-blur-[45px] border border-[rgba(255,255,255,0.15)] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] px-[20px] py-[6px] md:px-[60px] md:py-[10px] z-50 whitespace-nowrap">
+      <span className="text-white font-bold text-[18px] md:text-[28px] drop-shadow-md">2026</span>
+    </div>
+
+  </div>
+</div>
+
+      {/* COMPONENTE: INDICADOR DE SCROLL (Z-45) */}
       <div
         id="scroll-mouse-indicator"
         className="absolute inset-x-0 bottom-32 flex flex-col items-center justify-center pointer-events-none z-[45] transition-opacity duration-300"
@@ -219,7 +231,7 @@ const HeroParallax = () => {
         </div>
       </div>
 
-      {/* z-30: La Tarjeta de Cristal (Nace invisible, limpia el fondo) */}
+      {/* z-30: La Tarjeta de Cristal */}
       <div
         ref={cardRef}
         style={{ zIndex: 30 }}
@@ -230,14 +242,18 @@ const HeroParallax = () => {
         </div>
       </div>
 
-      {/* z-35: Firma SVG (bottom-right, fades in after card settles) */}
+      {/* z-35: Firma SVG */}
       <div ref={firmaRef} className="absolute bottom-8 right-8 w-32 h-auto pointer-events-none z-[35] opacity-0">
         <img src={firmaSvg} alt="Firma" className="w-full h-auto" />
       </div>
 
-      {/* z-40: Rocas negras del frente */}
+      {/* z-40: Rocas negras del frente - AHORA MANEJADAS DESDE GSAP */}
       <div ref={rocksRef} className="absolute inset-0 w-full h-full pointer-events-none z-40 origin-bottom">
-        <img src={rocasFrente} alt="Foreground Rocks" className="w-full h-full object-cover object-bottom" />
+        <img 
+          src={rocasFrente} 
+          alt="Foreground Rocks" 
+          className="w-full h-full object-cover object-bottom scale-[1] origin-bottom" 
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90 pointer-events-none" />
       </div>
 
