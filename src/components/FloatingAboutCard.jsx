@@ -1,63 +1,77 @@
-import pathFirma from "/images/Path.svg";
+import pathFirma from "/images/firma.svg";
 import fotoBruno from "/images/bruno.png";
 
 const FloatingAboutCard = ({ cardRef, photoRef, signatureRef }) => {
   return (
     <div
       ref={cardRef}
-      className="absolute bottom-0 left-0 w-full flex justify-center pointer-events-auto pb-10 px-[60px]"
+      className="relative w-full flex justify-center pointer-events-auto px-4 sm:px-8 md:px-12 max-w-[1300px] mx-auto pb-16 md:pb-24"
     >
-      <div className="w-full max-w-[1700px] flex flex-col">
-        {/* About card - HTML nativo con Glassmorphism Apple Real */}
-        <div className="self-stretch rounded-[80px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[40px] border border-[rgba(255,255,255,0.15)] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] flex flex-col lg:flex-row items-start py-[55px] pl-[94px] pr-[71px] box-border gap-[129px] max-w-full z-[2] mq450:gap-4 mq450:pt-[23px] mq450:pb-[23px] mq450:box-border mq1250:gap-16 mq1250:pl-[47px] mq1250:pr-[35px] mq1250:box-border mq825:gap-8 mq825:pl-[23px] mq825:pt-9 mq825:pb-9 mq825:box-border mq1550:flex-wrap">
+      <div className="w-full flex flex-col relative">
+        {/* Glassmorphism Card Wrapper */}
+        <div className="w-full rounded-[40px] md:rounded-[60px] lg:rounded-[80px] bg-[rgba(255,255,255,0.05)] backdrop-blur-[40px] border border-[rgba(255,255,255,0.15)] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] flex flex-col lg:flex-row items-center lg:items-start p-8 md:p-12 lg:p-20 gap-10 lg:gap-20 z-[2]">
 
-          <section className="flex-1 flex flex-col items-start pt-[61px] px-0 pb-0 box-border min-w-[647px] max-w-full shrink-0 text-left text-[80.5px] text-white font-['Surgena_Personal_use_only'] mq450:pt-10 mq450:box-border mq1250:min-w-full">
-            <div className="self-stretch flex flex-col items-start gap-[108px] max-w-full mq1250:gap-[54px] mq825:gap-[27px]">
+          {/* Left Column (Typography & Content) */}
+          <section className="flex-1 flex flex-col text-left text-white max-w-full lg:max-w-3xl">
+            {/* Title */}
+            <h1 className="font-['Surgena_Personal_use_only'] text-4xl md:text-6xl mb-8 text-white">
+              Sobre mí ...
+            </h1>
 
+            {/* Biography */}
+            <div className="text-xl md:text-2xl leading-relaxed font-['ITC_Avant_Garde_Gothic_Std'] text-white/90">
+              <p className="mb-6">
+                Soy Bruno Guilenia, Director Creativo y Diseñador Gráfico argentino.
+              </p>
+              <p className="mb-6">
+                Hace más de 8 años diseño sistemas visuales para marcas.
+              </p>
+              <p className="mb-8">
+                Integrando branding, contenido digital, motion, UX/UI, editorial, video e inteligencia artificial con un objetivo claro: comunicar efectivamente.
+              </p>
 
-
-              {/* Biografía */}
-              <div className="self-stretch h-auto relative text-[28.5px] leading-[128%] font-['ITC_Avant_Garde_Gothic_Std'] inline-block shrink-0 z-[1] text-white/80 mq450:text-[23px] mq450:leading-[29px]">
-                Soy Bruno Guilenia, Director Creativo y Disenador Grafico argentino.
-                <br />
-                <br />
-                Hace mas de 8 anos diseno sistemas visuales para marcas.
-                <br />
-                <br />
-                Integrando branding, contenido digital, motion, UX/UI, editorial, video
-                <br />e inteligencia artificial con un objective claro: comunicar efectivamente.
+              {/* Specialty Tags */}
+              <div className="border-t border-white/20 pt-6 mt-4">
+                <p className="text-sm md:text-base font-semibold font-['ITC_Avant_Garde_Gothic_Std'] text-white/80 tracking-wide">
+                  Branding - Motion Graphics - UX/UI - Editorial - Video - Social Media - AI
+                </p>
               </div>
-
-              {/* Firma vectorial usando la variable importada 👈 */}
-              <img
-                ref={signatureRef}
-                src={pathFirma}
-                alt="Firma Bruno Guilenia"
-                className="w-[120px] h-auto mt-4 opacity-80"
-              />
             </div>
           </section>
 
-          {/* Foto usando la variable importada 👈 */}
-          <img
-            ref={photoRef}
-            className="w-[526px] relative rounded-[74.9px] max-h-full object-cover max-w-full z-[1] shrink-0 mq1550:flex-1 drop-shadow-2xl"
-            alt="Bruno Guilenia"
-            src={fotoBruno}
-          />
+          {/* Right Column (Photo & Signature Treatment) */}
+          <div className="flex flex-col items-center w-full lg:w-auto shrink-0">
+            {/* The Photo Frame */}
+            <div className="relative w-full max-w-[350px] lg:max-w-[420px] aspect-[4/5] rounded-[60px] md:rounded-[74.9px] overflow-hidden drop-shadow-2xl z-[1]">
+              <img
+                ref={photoRef}
+                src={fotoBruno}
+                alt="Bruno Guilenia"
+                className="w-full h-full object-cover object-top scale-135 transition-transform sepia brightness-[0.85] contrast-[1.15]"
+              />
+            </div>
+
+            {/* Signature Placement */}
+            <img
+              ref={signatureRef}
+              src={pathFirma}
+              alt="Firma Bruno Guilenia"
+              className="absolute -bottom-8 -right-8 w-[160px] h-auto opacity-100 z-[60] drop-shadow-xl"
+            />
+          </div>
         </div>
 
-        {/* Botón CTA (VER TRABAJOS) anclado orgánicamente al card */}
-        <div className="flex items-start py-0 px-[94px] box-border max-w-full mt-[-40px] md:mt-[-80px] lg:mt-[-128px] relative mq450:pl-5 mq450:pr-5 mq450:box-border mq825:pl-[47px] mq825:pr-[47px] mq825:box-border z-10">
+        {/* Call to Action Button ("MI TRABAJO") */}
+        <div className="absolute -bottom-6 left-8 md:left-24 z-10">
           <a
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-pointer [border:none] pt-[30px] px-[92px] pb-[31px] bg-[rgba(255,255,255,0.08)] backdrop-blur-[40px] border border-[rgba(255,255,255,0.2)] shadow-[0_4px_30px_rgba(0,0,0,0.3)] hover:bg-[rgba(255,255,255,0.15)] rounded-[44px] flex items-start justify-center box-border max-w-full transition-all duration-300 mq450:pl-5 mq450:pr-5 mq450:box-border"
+            className="inline-flex items-center justify-center bg-white text-[#010101] hover:bg-gray-200 transition-colors duration-300 rounded-full px-10 py-4 md:px-14 md:py-6 shadow-2xl"
           >
-            <div className="h-[27px] w-[230px] relative text-[39.8px] leading-[27px] font-semibold font-['Surgena_Personal_use_only'] text-white text-left inline-block shrink-0">
+            <span className="font-['Surgena_Personal_use_only'] text-2xl md:text-4xl font-semibold leading-none pt-1">
               MI TRABAJO
-            </div>
+            </span>
           </a>
         </div>
       </div>
